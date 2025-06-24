@@ -23,7 +23,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Visualização Geral</title>
-    <link rel="stylesheet" href="CSS/visualizacao-geral.css">
+    <link rel="stylesheet" href="../CSS/visualizacao-geral.css">
 </head>
 <body>
 
