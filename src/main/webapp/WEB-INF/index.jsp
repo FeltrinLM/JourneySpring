@@ -25,7 +25,7 @@
         <input type="submit" value="Cadastrar" />
     </form>
 
-    <p>Já tem uma conta? <a href="../login.jsp">Clique aqui para fazer login</a></p>
+    <p>Já tem uma conta? <a href="login.jsp">Clique aqui para fazer login</a></p>
 
     <%
         String mensagem = (String) request.getAttribute("mensagem");
