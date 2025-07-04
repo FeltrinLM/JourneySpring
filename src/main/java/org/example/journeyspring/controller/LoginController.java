@@ -1,27 +1,31 @@
 package org.example.journeyspring.controller;
 
-
-import org.example.journeyspring.service.LoginService;
+import org.example.journeyspring.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class LoginController {
 
-    @GetMapping
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @GetMapping("/")
     public String index() {
         return "index";
     }
 
     @PostMapping("/login")
-    public String login(Model model, String nome, String email, String senha) {
+    public String login(Model model,
+                        @RequestParam String nome,
+                        @RequestParam String email,
+                        @RequestParam String senha) {
 
-        if(new LoginService(). autenticar(email, senha)){
+        if (usuarioService.autenticar(email, senha)) {
             return "redirect:/visualizacao-geral";
-        }else{
+        } else {
             model.addAttribute("msg", "Login ou senha incorretos");
             return "login";
         }
@@ -31,6 +35,4 @@ public class LoginController {
     public String dashboard() {
         return "visualizacao-geral";
     }
-
-
 }

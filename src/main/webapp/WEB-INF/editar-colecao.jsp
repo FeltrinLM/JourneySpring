@@ -6,7 +6,7 @@
     String erro = (String) request.getAttribute("erro");
 
     if (colecao == null) {
-        response.sendRedirect("dashboard");
+        response.sendRedirect(request.getContextPath() + "/dashboard");
         return;
     }
 %>
@@ -16,14 +16,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Coleção</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/editar-colecao.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/editar-colecao.css">
 </head>
 <body>
 
 <div class="form-container">
     <h2>Editar Coleção</h2>
 
-    <form action="editar-colecao" method="post">
+    <form action="<%= request.getContextPath() %>/editar-colecao" method="post">
         <input type="hidden" name="id" value="<%= colecao.getId_colecao() %>">
 
         <label for="nome">Nome:</label>
@@ -47,10 +47,11 @@
         <% } %>
 
         <div class="btn-group">
-            <a href="dashboard" class="btn-voltar">Voltar</a>
+            <a href="<%= request.getContextPath() %>/dashboard" class="btn-voltar">Voltar</a>
             <input type="submit" value="Salvar" class="btn-salvar">
         </div>
     </form>
 </div>
+
 </body>
 </html>

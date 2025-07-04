@@ -2,16 +2,17 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.journeyspring.model.Usuario" %>
 <%@ page import="org.example.journeyspring.model.Colecao" %>
+
 <%
     Usuario usuario = (Usuario) session.getAttribute("usuario");
     if (usuario == null) {
-        response.sendRedirect("index.jsp?erro=session_expired");
+        response.sendRedirect(request.getContextPath() + "/index.jsp?erro=session_expired");
         return;
     }
 
     List<Colecao> colecoes = (List<Colecao>) request.getAttribute("colecoes");
     if (colecoes == null) {
-        response.sendRedirect("nova-estampa");
+        response.sendRedirect(request.getContextPath() + "/nova-estampa");
         return;
     }
 %>
@@ -28,7 +29,7 @@
 <div class="form-container">
     <h2>Adicionar Nova Estampa</h2>
 
-    <form action="nova-estampa" method="post">
+    <form action="${pageContext.request.contextPath}/nova-estampa" method="post">
         <label>Nome:</label>
         <input type="text" name="nome" required>
 
@@ -44,7 +45,7 @@
         </select>
 
         <div class="btn-container">
-            <a href="dashboard" class="btn-voltar">Voltar</a>
+            <a href="${pageContext.request.contextPath}/dashboard" class="btn-voltar">Voltar</a>
             <button type="submit" class="btn-salvar">Cadastrar</button>
         </div>
     </form>

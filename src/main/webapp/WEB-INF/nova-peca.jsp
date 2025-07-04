@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Nova Peça</title>
-    <link rel="stylesheet" href="../CSS/nova-peca.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/nova-peca.css">
 </head>
 <body>
 
 <div class="form-container">
     <h2>Cadastrar Nova Peça</h2>
 
-    <form method="post" action="nova-peca">
+    <form method="post" action="${pageContext.request.contextPath}/nova-peca">
         <label>Tipo:</label><br>
         <select name="tipo" required>
             <option value="">Selecione</option>
@@ -47,7 +47,7 @@
         <input type="number" name="quantidade" required><br>
 
         <div class="btn-group">
-            <a href="dashboard" class="btn-voltar">Voltar</a>
+            <a href="${pageContext.request.contextPath}/dashboard" class="btn-voltar">Voltar</a>
             <input type="submit" value="Salvar" class="btn-salvar">
         </div>
     </form>

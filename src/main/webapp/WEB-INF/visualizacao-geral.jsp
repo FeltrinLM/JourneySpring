@@ -5,11 +5,10 @@
 <%@ page import="org.example.journeyspring.model.Colecao" %>
 <%@ page import="org.example.journeyspring.model.Estampa" %>
 
-
 <%
     Usuario usuario = (Usuario) session.getAttribute("usuario");
     if (usuario == null) {
-        response.sendRedirect("index.jsp?erro=session_expired");
+        response.sendRedirect(request.getContextPath() + "/index.jsp?erro=session_expired");
         return;
     }
 
@@ -23,7 +22,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Visualização Geral</title>
-    <link rel="stylesheet" href="../CSS/visualizacao-geral.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/visualizacao-geral.css">
 </head>
 <body>
 
@@ -47,12 +46,12 @@
             <td><%= p.getCor() %></td>
             <td><%= p.getQuantidade() %></td>
             <td class="btn-group">
-                <form method="post" action="dashboard">
+                <form method="post" action="${pageContext.request.contextPath}/dashboard">
                     <input type="hidden" name="acao" value="excluir">
                     <input type="hidden" name="id" value="<%= p.getPeca_id() %>">
                     <input type="submit" value="Excluir" class="btn-excluir">
                 </form>
-                <form method="get" action="editar-peca">
+                <form method="get" action="${pageContext.request.contextPath}/editar-peca">
                     <input type="hidden" name="id" value="<%= p.getPeca_id() %>">
                     <input type="submit" value="Editar" class="btn-editar">
                 </form>
@@ -61,7 +60,7 @@
         <%  }} %>
     </table>
     <div class="btn-wrapper">
-        <form action="nova-peca.jsp" method="get">
+        <form action="${pageContext.request.contextPath}/nova-peca" method="get">
             <input type="submit" value="Cadastrar nova peça" class="btn-add">
         </form>
     </div>
@@ -83,12 +82,12 @@
             <td><%= c.getData_inicio() %></td>
             <td><%= c.getData_fim() %></td>
             <td class="btn-group">
-                <form method="post" action="dashboard">
+                <form method="post" action="${pageContext.request.contextPath}/dashboard">
                     <input type="hidden" name="acao" value="excluir-colecao">
                     <input type="hidden" name="id" value="<%= c.getId_colecao() %>">
                     <input type="submit" value="Excluir" class="btn-excluir">
                 </form>
-                <form method="get" action="editar-colecao">
+                <form method="get" action="${pageContext.request.contextPath}/editar-colecao">
                     <input type="hidden" name="id" value="<%= c.getId_colecao() %>">
                     <input type="submit" value="Editar" class="btn-editar">
                 </form>
@@ -97,7 +96,7 @@
         <%  }} %>
     </table>
     <div class="btn-wrapper">
-        <form method="get" action="nova-colecao.jsp">
+        <form method="get" action="${pageContext.request.contextPath}/nova-colecao">
             <input type="submit" value="Cadastrar nova coleção" class="btn-add">
         </form>
     </div>
@@ -119,12 +118,12 @@
             <td><%= e.getQuantidade() %></td>
             <td><%= e.getNomeColecao() %></td>
             <td class="btn-group">
-                <form method="post" action="dashboard">
+                <form method="post" action="${pageContext.request.contextPath}/dashboard">
                     <input type="hidden" name="acao" value="excluir-estampa">
                     <input type="hidden" name="id" value="<%= e.getId_estampa() %>">
                     <input type="submit" value="Excluir" class="btn-excluir">
                 </form>
-                <form method="get" action="editar-estampa">
+                <form method="get" action="${pageContext.request.contextPath}/editar-estampa">
                     <input type="hidden" name="estampa_id" value="<%= e.getId_estampa() %>">
                     <input type="submit" value="Editar" class="btn-editar">
                 </form>
@@ -133,7 +132,7 @@
         <%  }} %>
     </table>
     <div class="btn-wrapper">
-        <form method="get" action="nova-estampa.jsp">
+        <form method="get" action="${pageContext.request.contextPath}/nova-estampa">
             <input type="submit" value="Cadastrar nova estampa" class="btn-add">
         </form>
     </div>

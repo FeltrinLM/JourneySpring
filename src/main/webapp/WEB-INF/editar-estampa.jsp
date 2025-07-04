@@ -8,7 +8,7 @@
     List<Colecao> colecoes = (List<Colecao>) request.getAttribute("colecoes");
 
     if (estampa == null || colecoes == null) {
-        response.sendRedirect("dashboard");
+        response.sendRedirect(request.getContextPath() + "/dashboard");
         return;
     }
 %>
@@ -18,14 +18,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Estampa</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/editar-estampa.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/editar-estampa.css">
 </head>
 <body>
 
 <div class="form-container">
     <h2>Editar Estampa</h2>
 
-    <form method="post" action="editar-estampa">
+    <form method="post" action="<%= request.getContextPath() %>/editar-estampa">
         <input type="hidden" name="estampa_id" value="<%= estampa.getId_estampa() %>">
 
         <label>Nome:</label>
@@ -44,7 +44,7 @@
         </select>
 
         <div class="btn-container">
-            <a href="dashboard" class="btn-voltar">Voltar</a>
+            <a href="<%= request.getContextPath() %>/dashboard" class="btn-voltar">Voltar</a>
             <button type="submit" class="btn-salvar">Salvar alterações</button>
         </div>
     </form>

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.lang.String" %>
 <html>
 <head>
     <title>Cadastro de Usuário</title>
@@ -25,7 +26,7 @@
         <input type="submit" value="Cadastrar" />
     </form>
 
-    <p>Já tem uma conta? <a href="login.jsp">Clique aqui para fazer login</a></p>
+    <p>Já tem uma conta? <a href="login">Clique aqui para fazer login</a></p>
 
     <%
         String mensagem = (String) request.getAttribute("mensagem");

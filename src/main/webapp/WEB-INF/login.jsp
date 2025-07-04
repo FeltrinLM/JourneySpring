@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="../CSS/login.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/login.css">
 </head>
 <body>
 
 <div class="form-container">
     <h2>Entrar no sistema</h2>
 
-    <form action="login" method="post">
+    <form action="${pageContext.request.contextPath}/login" method="post">
         <label>Email:<br>
             <input type="email" name="email" required />
         </label><br>
@@ -31,7 +31,7 @@
         <% } %>
 
         <div class="button-group">
-            <button type="button" class="btn-voltar" onclick="window.location.href='index.jsp'">Voltar</button>
+            <button type="button" class="btn-voltar" onclick="window.location.href='${pageContext.request.contextPath}/usuario'">Voltar</button>
             <input type="submit" value="Entrar" class="btn-entrar" />
         </div>
     </form>

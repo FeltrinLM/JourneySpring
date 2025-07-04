@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Nova Coleção</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/nova-colecao.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/nova-colecao.css">
 </head>
 <body>
 
 <div class="form-container">
     <h2>Cadastrar Nova Coleção</h2>
 
-    <form method="post" action="nova-colecao">
+    <form method="post" action="${pageContext.request.contextPath}/nova-colecao">
         <label for="nome">Nome:</label>
         <input type="text" name="nome" id="nome" required>
 
@@ -35,7 +35,7 @@
         <% } %>
 
         <div class="btn-group">
-            <a href="dashboard" class="btn-voltar">Voltar</a>
+            <a href="${pageContext.request.contextPath}/dashboard" class="btn-voltar">Voltar</a>
             <input type="submit" value="Salvar" class="btn-salvar">
         </div>
     </form>

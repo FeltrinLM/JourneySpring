@@ -4,7 +4,7 @@
 <%
     Peca peca = (Peca) request.getAttribute("peca");
     if (peca == null) {
-        response.sendRedirect("dashboard");
+        response.sendRedirect(request.getContextPath() + "/dashboard");
         return;
     }
 
@@ -18,14 +18,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Peça</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/editar-peca.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/editar-peca.css">
 </head>
 <body>
 
 <div class="form-container">
     <h2>Editar Peça</h2>
 
-    <form method="post" action="editar-peca">
+    <form method="post" action="<%= request.getContextPath() %>/editar-peca">
         <input type="hidden" name="peca_id" value="<%= peca.getPeca_id() %>">
 
         <label>Tipo:</label>
@@ -53,7 +53,7 @@
         <input type="number" name="quantidade" value="<%= peca.getQuantidade() %>" required>
 
         <div class="btn-container">
-            <a href="dashboard" class="btn-voltar">Voltar</a>
+            <a href="<%= request.getContextPath() %>/dashboard" class="btn-voltar">Voltar</a>
             <button type="submit" class="btn-salvar">Salvar alterações</button>
         </div>
     </form>
