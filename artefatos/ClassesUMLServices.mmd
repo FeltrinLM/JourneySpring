@@ -1,0 +1,121 @@
+classDiagram
+    direction TB
+
+%% ==== CONTROLLERS ====
+    class UsuarioController {
+        - UsuarioService usuarioService
+        + cadastrarUsuario(nome, email, senha, request, model)
+    }
+
+    class LoginController {
+        - UsuarioService usuarioService
+        - PecaService pecaService
+        - ColecaoService colecaoService
+        - EstampaService estampaService
+        + index()
+        + exibirLogin()
+        + realizarLogin(model, session, email, senha)
+        + dashboard(session, model)
+    }
+
+    class DashboardController {
+        - PecaService pecaService
+        - ColecaoService colecaoService
+        - EstampaService estampaService
+        + mostrarDashboard(request, model)
+        + executarAcao(acao, id)
+    }
+
+    class NovaPecaController {
+        - PecaService pecaService
+        + exibirFormulario()
+        + criarPeca(tipo, tamanho, cor, quantidade)
+    }
+
+    class NovaColecaoController {
+        - ColecaoService colecaoService
+        + mostrarFormulario()
+        + criarColecao(nome, data_inicio, data_fim, model)
+    }
+
+    class NovaEstampaController {
+        - EstampaService estampaService
+        - ColecaoDAO colecaoDAO
+        + mostrarFormulario(model)
+        + criarEstampa(nome, quantidade, idColecao)
+    }
+
+    class EditarPecaController {
+        - PecaService pecaService
+        + mostrarFormulario(id, model)
+        + editarPeca(id, tipo, tamanho, cor, quantidade)
+    }
+
+    class EditarColecaoController {
+        - ColecaoDAO dao
+        + mostrarFormulario(id, model)
+        + editarColecao(id, nome, data_inicio, data_fim, model)
+    }
+
+    class EditarEstampaController {
+        - EstampaService estampaService
+        - ColecaoDAO colecaoDAO
+        + mostrarFormulario(estampa_id, model)
+        + editarEstampa(id, nome, quantidade, id_colecao)
+    }
+
+%% ==== SERVICES ====
+    class ColecaoService {
+        - ColecaoDAO dao
+        + nomeExiste(nome): boolean
+        + inserir(colecao): void
+        + listar(): List<Colecao>
+        + removerColecao(id): void
+    }
+
+    class EstampaService {
+        - EstampaDAO estampaDAO
+        + buscarPorId(id): Estampa
+        + atualizarEstampaComVerificacao(estampa): void
+        + inserirOuSomarEstampa(estampa): void
+        + listar(): List<Estampa>
+        + excluir(id): void
+    }
+
+    class PecaService {
+        - PecaDAO pecaDAO
+        + buscarPorId(id): Peca
+        + atualizarOuFundirPeca(novaPeca): void
+        + inserirOuSomarPeca(novaPeca): void
+        + listar(): List<Peca>
+        + excluir(id): void
+    }
+
+    class UsuarioService {
+        - UsuarioDAO usuarioDAO
+        + autenticar(email, senha): boolean
+        + buscarPorEmail(email): Usuario
+        + cadastrar(usuario): boolean
+    }
+
+%% ==== RELAÇÕES SERVICE/DAO ====
+    DashboardController --> PecaService
+    DashboardController --> ColecaoService
+    DashboardController --> EstampaService
+
+    EditarEstampaController --> EstampaService
+
+    EditarPecaController --> PecaService
+
+    LoginController --> UsuarioService
+    LoginController --> PecaService
+    LoginController --> ColecaoService
+    LoginController --> EstampaService
+
+    NovaColecaoController --> ColecaoService
+    NovaEstampaController --> EstampaService
+    NovaPecaController --> PecaService
+
+    UsuarioController --> UsuarioService
+
+    EditarColecaoController --> ColecaoService

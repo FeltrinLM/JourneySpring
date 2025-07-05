@@ -1,0 +1,73 @@
+classDiagram
+
+    class Colecao {
+        -int id_colecao
+        -String nome
+        -String data_inicio
+        -String data_fim
+    }
+
+    class Estampa {
+        -int id_estampa
+        -int id_colecao
+        -String nome
+        -int quantidade
+        -String nomeColecao
+    }
+
+    class Peca {
+        -int peca_id
+        -String tipo
+        -String tamanho
+        -String cor
+        -int quantidade
+    }
+
+    class Usuario {
+        -int id_usuario
+        -String nome
+        -String email
+        -String senha
+    }
+
+    class ColecaoDAO {
+        +listar(): List<Colecao>
+        +buscarPorId(id): Colecao
+        +inserir(Colecao): boolean
+        +atualizar(Colecao): boolean
+        +removerColecao(id): boolean
+        +nomeExiste(nome): boolean
+    }
+
+    class EstampaDAO {
+        +listar(): List<Estampa>
+        +buscarPorId(id): Estampa
+        +inserir(Estampa): boolean
+        +atualizar(Estampa): boolean
+        +excluir(id): boolean
+        +buscarPorNomeEColecao(nome, idColecao): Estampa
+        +atualizarQuantidade(id, qtd): boolean
+    }
+
+    class PecaDAO {
+        +listar(): List<Peca>
+        +buscarPorId(id): Peca
+        +inserir(Peca): boolean
+        +atualizar(Peca): boolean
+        +excluir(id): boolean
+        +buscarPorAtributos(tipo, tamanho, cor): Peca
+        +atualizarQuantidade(id, qtd): boolean
+    }
+
+    class UsuarioDAO {
+        +inserir(Usuario): boolean
+        +listar(): List<Usuario>
+        +buscarPorEmail(email): Usuario
+        +buscarPorEmailESenha(email, senha): Usuario
+    }
+
+    ColecaoDAO --> Colecao
+    EstampaDAO --> Estampa
+    PecaDAO --> Peca
+    UsuarioDAO --> Usuario
+    Estampa --> Colecao : contém

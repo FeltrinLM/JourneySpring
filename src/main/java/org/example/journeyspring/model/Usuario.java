@@ -17,8 +17,6 @@ public class Usuario {
         this.id_usuario = id_usuario;
     }
 
-
-
     public String getSenha() {
         return senha;
     }
@@ -26,7 +24,6 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
 
     public String getNome() {
         return nome;

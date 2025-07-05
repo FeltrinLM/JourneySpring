@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/editar-colecao")
 public class EditarColecaoController {
 
-    private final ColecaoDAO dao = new ColecaoDAO(); // Idealmente isso seria injetado como Bean
+    private final ColecaoDAO dao = new ColecaoDAO();
 
     // Mostra o formulário de edição
     @GetMapping

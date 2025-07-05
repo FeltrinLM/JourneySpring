@@ -47,7 +47,7 @@
         <input type="number" name="quantidade" required><br>
 
         <div class="btn-group">
-            <a href="${pageContext.request.contextPath}/dashboard" class="btn-voltar">Voltar</a>
+            <a href="${pageContext.request.contextPath}/visualizacao-geral" class="btn-voltar">Voltar</a>
             <input type="submit" value="Salvar" class="btn-salvar">
         </div>
     </form>

@@ -1,7 +1,5 @@
 package org.example.journeyspring.DAO;
 
-
-
 import org.example.journeyspring.model.Estampa;
 
 import java.sql.Connection;

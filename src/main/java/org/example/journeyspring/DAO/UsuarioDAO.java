@@ -66,7 +66,7 @@ public class UsuarioDAO {
              PreparedStatement stmt = con.prepareStatement(sql)) {
 
             stmt.setString(1, email);
-            stmt.setString(2, senha);  // ← AGORA É STRING!
+            stmt.setString(2, senha);
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {

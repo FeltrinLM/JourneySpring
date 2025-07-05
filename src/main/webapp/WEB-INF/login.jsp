@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/login.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/login.css">
 </head>
 <body>
 
 <div class="form-container">
     <h2>Entrar no sistema</h2>
 
-    <form action="${pageContext.request.contextPath}/login" method="post">
+    <form action="<%= request.getContextPath() %>/login" method="post">
         <label>Email:<br>
             <input type="email" name="email" required />
         </label><br>
@@ -20,8 +20,9 @@
             <input type="password" name="senha" required />
         </label><br>
 
-        <% if (request.getAttribute("erro") != null) { %>
-        <p class="mensagem-erro" id="erro-msg"><%= request.getAttribute("erro") %></p>
+        <% String erro = (String) request.getAttribute("erro");
+            if (erro != null) { %>
+        <p class="mensagem-erro" id="erro-msg"><%= erro %></p>
         <script>
             setTimeout(() => {
                 const msg = document.getElementById('erro-msg');
@@ -31,7 +32,7 @@
         <% } %>
 
         <div class="button-group">
-            <button type="button" class="btn-voltar" onclick="window.location.href='${pageContext.request.contextPath}/usuario'">Voltar</button>
+            <button type="button" class="btn-voltar" onclick="window.location.href='<%= request.getContextPath() %>/usuario'">Voltar</button>
             <input type="submit" value="Entrar" class="btn-entrar" />
         </div>
     </form>
