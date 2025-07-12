@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: journey-spring
+    env: docker
+    plan: free
+    autoDeploy: true
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
